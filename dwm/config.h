@@ -7,7 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrains Mono:size=11", "JoyPixels:pixelsize=11:antialias=true:autohint=true"};
+static const char *fonts[]          = { "JetBrains Mono:size=11" , /* "Comic Shanns:size=12",*/  "JoyPixels:pixelsize=11:antialias=true:autohint=true"};
 static const char dmenufont[]       = "JetBrains Mono:size=11";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
@@ -15,7 +15,7 @@ static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
 static char selbordercolor[]        = "#005577";
 static char selbgcolor[]            = "#005577";
-static char *colors[][3] = { */
+static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
@@ -69,14 +69,17 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static char dmenumon[2] = "0";  /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
-static const char *cmdsoundup[]  = { "pactl",  "set-sink-volume", "0", "+2%", NULL };
-static const char *cmdsounddown[]  = { "pactl", "set-sink-volume", "0", "-2%",  NULL };
-static const char *cmdsoundtoggle[]  = { "pactl", "set-sink-mute", "0", "toggle", NULL };
+/* static const char *roficmd[] = {"rofi", "-show", "drun", NULL}; */
+static const char *cmdsoundup[]  = { "pamixer", "-i", "2",  NULL };
+static const char *cmdsounddown[]  = { "pamixer", "-d", "2",  NULL };
+static const char *cmdsoundtoggle[]  = { "pamixer", "-t", NULL };
 static const char *cmdbrightnessup[]  = { "brightnessctl", "set", "5%+", NULL };
 static const char *cmdbrightnessdown[]  = { "brightnessctl", "set", "5%-", NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *ncmpcppcmd[]  = { "st", "ncmpcpp", NULL };
+static const char *screenshot[]  = { "spectacle", "-r", NULL };
 
 
 static Key keys[] = {
@@ -97,6 +100,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,  	   setlayout,      {0} },
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,			XK_Return, spawn,          {.v = termcmd } },
+        { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshot } },
+	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   {.v = ncmpcppcmd } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },

@@ -1870,9 +1870,9 @@ spawn(const Arg *arg)
 		perror(" failed");
 		exit(EXIT_SUCCESS);
 	}
-}
+} 
 
-void
+void 
 tag(const Arg *arg)
 {
 	if (selmon->sel && arg->ui & TAGMASK) {
