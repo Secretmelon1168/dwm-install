@@ -36,6 +36,7 @@ static const Rule rules[] = {
 	{ "Lutris",             NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "firefox",   		NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
 	{ "St",                 NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "Alacritty",		NULL,	  NULL,		  0,	     0,		 1,	      0,	-1 },
         { "deadbeef",           NULL,     NULL,           1 << 5,    0,          0,           0,        -1 }, 
 	{ NULL,                 NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
@@ -77,9 +78,10 @@ static const char *cmdsounddown[]  = { "pamixer", "-d", "2",  NULL };
 static const char *cmdsoundtoggle[]  = { "pamixer", "-t", NULL };
 static const char *cmdbrightnessup[]  = { "brightnessctl", "set", "5%+", NULL };
 static const char *cmdbrightnessdown[]  = { "brightnessctl", "set", "5%-", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *ncmpcppcmd[]  = { "st", "ncmpcpp", NULL };
 static const char *screenshot[]  = { "spectacle", "-r", NULL };
+static const char *mpctoggle[]  = { "mpc", "toggle", NULL };
 
 
 static Key keys[] = {
@@ -102,6 +104,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_Return, spawn,          {.v = termcmd } },
         { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshot } },
 	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   {.v = ncmpcppcmd } },
+	{ MODKEY,			XK_p,	   spawn,	   {.v = mpctoggle } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
