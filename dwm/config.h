@@ -82,7 +82,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *ncmpcppcmd[]  = { "st", "ncmpcpp", NULL };
 static const char *screenshot[]  = { "spectacle", "-r", NULL };
 static const char *mpctoggle[]  = { "mpc", "toggle", NULL };
-
+static const char *wallpapercmd[] = { "wal", "-i", "~/Wallpapers", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -105,6 +105,7 @@ static Key keys[] = {
         { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshot } },
 	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   {.v = ncmpcppcmd } },
 	{ MODKEY,			XK_p,	   spawn,	   {.v = mpctoggle } },
+	{ MODKEY,			XK_z,	   spawn,	   {.v = wallpapercmd } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
