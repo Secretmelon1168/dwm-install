@@ -82,7 +82,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *ncmpcppcmd[]  = { "st", "ncmpcpp", NULL };
 static const char *screenshot[]  = { "spectacle", "-r", NULL };
 static const char *mpctoggle[]  = { "mpc", "toggle", NULL };
-static const char *wallpapercmd[] = { "wal", "-i", "~/Wallpapers", NULL};
+static const char *wallpapercmd[] = { "wal", "-i", "/home/melon/Wallpapers/", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
