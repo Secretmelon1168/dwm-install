@@ -34,10 +34,11 @@ static const Rule rules[] = {
 	{ "TelegramDesktop",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "obs",                NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Lutris",             NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "spectacle",		NULL,	  NULL,		  0,	     1,		 0,	      0, 	-1 },
 	{ "firefox",   		NULL,     NULL,           1 << 2,    0,          0,          -1,        -1 },
 	{ "St",                 NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ "Alacritty",		NULL,	  NULL,		  0,	     0,		 1,	      0,	-1 },
-        { "deadbeef",           NULL,     NULL,           1 << 5,    0,          0,           0,        -1 }, 
+	{ "deadbeef",           NULL,     NULL,           1 << 5,    0,          0,           0,        -1 }, 
 	{ NULL,                 NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -82,7 +83,9 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static const char *ncmpcppcmd[]  = { "st", "ncmpcpp", NULL };
 static const char *screenshot[]  = { "spectacle", "-r", NULL };
 static const char *mpctoggle[]  = { "mpc", "toggle", NULL };
-static const char *wallpapercmd[] = { "wal", "-i", "/home/melon/Wallpapers/", NULL };
+static const char *wallpapercmd[]  = { "wal", "-i", "/home/melon/Wallpapers/", NULL };
+static const char *mpcnext[]  = { "mpc", "next", NULL };
+static const char *mpcprev[]  = { "mpc", "prev", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -102,10 +105,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,  	   setlayout,      {0} },
 	{ MODKEY,                       XK_space,  spawn,          {.v = dmenucmd } },
 	{ MODKEY,			XK_Return, spawn,          {.v = termcmd } },
-        { MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshot } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = screenshot } },
 	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   {.v = ncmpcppcmd } },
 	{ MODKEY,			XK_p,	   spawn,	   {.v = mpctoggle } },
-	{ MODKEY,			XK_z,	   spawn,	   {.v = wallpapercmd } },
+	{ MODKEY|ShiftMask,		XK_F5,	   spawn,	   {.v = wallpapercmd } },
+	{ MODKEY|ControlMask,		XK_period, spawn,	   {.v = mpcnext } },
+	{ MODKEY|ControlMask,		XK_comma,  spawn,	   {.v = mpcprev } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
